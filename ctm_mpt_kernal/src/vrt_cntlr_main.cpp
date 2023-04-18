@@ -12,6 +12,11 @@
 #include <tf/transform_broadcaster.h>
 #include <tf/transform_listener.h>
 
+// #include"utils.h"
+
+#include<ros/package.h>
+
+
 void proc(size_t cur, size_t tot);
 
 int main(int argc, char** argv)
@@ -56,7 +61,9 @@ int main(int argc, char** argv)
 	ros::Duration(10).sleep(); // Wait for RViz to open.
 	if (ros::ok())
 	{
-		std::string fn("/home/ellipse/Desktop/catkin_ws/src/ctm_mpt/ctm_mpt_kernal/src/fq.txt");
+		printf("getOperationFilePath = %s\n",ros::package::getPath("ctm_mpt_kernal").c_str());
+		// std::string fn("/home/xusj/Documents/0LAB/CtmMpt/ctm_mpt_for_ubuntu-master/src/ctm_mpt/ctm_mpt_kernal/src/fq.txt");
+		std::string fn=ros::package::getPath("ctm_mpt_kernal")+std::string("/src/fq.txt");
 		std::ifstream fin(fn);
 		std::string str_ang;
 		std::string str_tot;
